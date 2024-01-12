@@ -1,13 +1,46 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.chat-row {
+  width: 100%;
+}
+
+.chat-box {
+  width: fit-content;
+  flex-direction: row-reverse;
+}
+
+.chat-row .chat-bubble {
+  background-color: #dedede;
+  padding: 9px 10px 9px 10px;
+  border-radius: 10px;
+}
+
+.chat-row.right .chat-bubble {
+  background-color: #c2dbff;
+}
+
+.chat-row.right .chat-box {
+  float: right;
+  flex-direction: row;
+}
+
+.chat-row .chat-time {
+  float: right;
+}
+
+.chat-row.right .gpt-help img,
+.chat-row.right .gpt-help button {
+  display: none;
 }
