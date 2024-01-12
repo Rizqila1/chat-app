@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import ChatGPTBlack from "../../src/assets/images/Mask group.png";
 
 const MessageBubble = () => {
+  const [showOriginal, setShowOriginal] = useState(false);
+
+  const changeMessage = () => {
+    setShowOriginal(!showOriginal);
+  };
+
   const data = [
     {
       speaker: "Ato",
@@ -52,9 +58,22 @@ const MessageBubble = () => {
           <div className="chat-box flex">
             <div className="flex flex-col">
               <div className="chat-bubble">
-                <p className="">{item.original_message}</p>
-                <hr className="w-full border-slate-400 my-1" />
-                <p>{item.translated_message}</p>
+                {item.speaker === "107" ? (
+                  <p className="">{item.original_message}</p>
+                ) : (
+                  <p className="">
+                    {showOriginal
+                      ? item.original_message
+                      : item.translated_message}
+                  </p>
+                )}
+
+                {item.speaker === "107" && (
+                  <>
+                    <hr className="w-full border-slate-400 my-1" />
+                    <p>{item.translated_message}</p>
+                  </>
+                )}
               </div>
 
               <div className="chat-time flex justify-between mt-1">
@@ -65,7 +84,9 @@ const MessageBubble = () => {
                     className="w-5 h-5"
                   />
 
-                  <button className="mx-2">Show Original</button>
+                  <button className="mx-2" onClick={() => changeMessage()}>
+                    Show Original
+                  </button>
                 </div>
 
                 <p className="text-sm">{item.time}</p>
